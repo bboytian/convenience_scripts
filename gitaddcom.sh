@@ -7,7 +7,7 @@ ADDALLBOO=1
 PUSHBOO=0
 COMMITMSGBOO=0
 
-if ! [[ "$1" =~ -.* ]] && [[ "$#" -gt 0 ]]; then
+if ! [[ "$1" =~ ^-.* ]] && [[ "$#" -gt 0 ]]; then
     COMMITMSGBOO=1
     COMMITMSG=$1
     shift
@@ -18,7 +18,7 @@ while [[ "$#" -gt 0 ]]; do
 	-a|--add)
 	    echo "adding files..."
 	    ADDALLBOO=0
-	    while ! [[ "$2" =~ -.* ]] && [[ "$#" -gt 1 ]]; do
+	    while ! [[ "$2" =~ ^-.* ]] && [[ "$#" -gt 1 ]]; do
 		echo -e "\t $2"
 		git add $2
 		shift
