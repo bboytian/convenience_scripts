@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+'''
+usage:
+shopsearch <search terms with spacing between words>
+'''
+
 
 # imports
 import os
