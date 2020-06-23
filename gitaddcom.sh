@@ -22,22 +22,18 @@ while [[ "$#" -gt 0 ]]; do
 		echo -e "\t $2"
 		git add $2
 		shift
-
-		if [[ "$2" == -- ]]; then
-		    shift
-		    break
-		fi
 	    done
 	    ;;
 	-p|--push)
 	    PUSHBOO=1
+	    ;;
+	--)
 	    ;;
 	-*)
 	    echo "invalid flag: $1"
 	    exit 1
 	    ;;
 	*)
-	    echo "this worked"
 	    COMMITMSGBOO=1
 	    COMMITMSG=$1
 	    ;;
