@@ -7,12 +7,6 @@ ADDALLBOO=1
 PUSHBOO=0
 COMMITMSGBOO=0
 
-# if ! [[ "$1" =~ ^-.* ]] && [[ "$#" -gt 0 ]]; then
-#     COMMITMSGBOO=1
-#     COMMITMSG=$1
-#     shift
-# fi   
-
 while [[ "$#" -gt 0 ]]; do
     case $1 in
 	-a|--add)
@@ -38,7 +32,7 @@ while [[ "$#" -gt 0 ]]; do
 	    COMMITMSG=$1
 	    ;;
     esac
-shift
+    shift
 done
 
 
