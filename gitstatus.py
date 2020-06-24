@@ -23,9 +23,9 @@ def _gitstatus_func(wd):
     borderstr = '*'*len(printstr)
     print(borderstr)
     print(f'--- git status for {wd} ---')
-    print(borderstr)    
+    print(borderstr)
     os.system('git status')
-    print('\n')    
+    print('\n')
 
 
 # defining recursive main func
@@ -45,13 +45,13 @@ def main(wd, counter, maxdepth):
                     print(f'maximum recursion depth {_maxmaxdepth} reached')
                 else:
                     main(f, counter + 1, maxdepth)
-            
+
 
 # running
 if __name__ == '__main__':
 
     maxdepth = _maxmaxdepth
-    
+
     # parsing arguments
     wd = os.getcwd()
     if len(sys.argv) > 1:
@@ -61,10 +61,12 @@ if __name__ == '__main__':
 
             if arg == '-n':
                 try:
-                    maxdepth = revarg_l.pop(0)
+                    maxdepth = int(revarg_l.pop(0))
                     print(f'setting max recursion depth: {maxdepth}')
                 except IndexError:
                     raise ValueError('missing "integer depth" for flag -n')
+                except ValueError:
+                    raise ValueError('"integer depth" for flag -n should be a number')
             elif arg[0] == '-':
                 raise ValueError(f'unknown flag: {arg}')
             else:
@@ -74,4 +76,4 @@ if __name__ == '__main__':
     print(f'begin recursive "git status" from {wd}\n')
     if '.git' in os.listdir(wd):
         _gitstatus_func(wd)
-    main(wd, 1, maxdepth)                
+    main(wd, 1, maxdepth)
