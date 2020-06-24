@@ -72,8 +72,9 @@ if __name__ == '__main__':
             else:
                 wd = osp.abspath(arg)
 
-    # running func
+                
     print(f'begin recursive "git status" from {wd}\n')
     if '.git' in os.listdir(wd):
         _gitstatus_func(wd)
-    main(wd, 1, maxdepth)
+    if maxdepth > 1:            # starting recursion function
+        main(wd, 1, maxdepth)
