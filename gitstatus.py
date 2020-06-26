@@ -30,6 +30,9 @@ def _gitstatus_func(wd, checklagboo):
     if checklagboo:
         os.system('git remote update')
 
+        print('remote branches are...')
+        os.system('git branch -r')
+
         # performs a branch relevance check with updated remote
         comstr = '''
         git for-each-ref --format="%(refname:short) %(upstream:short)" refs/heads | \
