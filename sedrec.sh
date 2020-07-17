@@ -8,8 +8,50 @@
 # to replace input with output 's/input/output/g'
 #
 # Sypnosis
-# sedrec <working dir> <sed expression>
+# sedrec <working dir> [-x <exclude phrase> ... -- ] <sed expression>
 
+# if [[ "$#" -lt 2 ]]; then
+#     echo "missing arguments"
+#     exit 1
+# fi
+
+# WD=$1
+# shift
+
+# while [[ "$#" -gt 0 ]]; do
+#     case $1 in
+#	-x|--exclude)
+#	    echo 'excluding patterns in path...'
+#	    while ! [[ "$2" =~ ^-.* ]] && [[ "$#" -gt 1 ]]; do
+#		echo -e "\t excluding $2"
+#		if [ -z $REVGREPSTR ]; then
+#		    REVGREPSTR=$2
+#		else
+#		    REVGREPSTR="$REVGREPSTR\|'$2'"
+#		fi
+#		shift
+#	    done
+#	    ;;
+#	--)
+#	    ;;
+#	-*)
+#	    echo "invalid flag: $1"
+#	    exit 1
+#	    ;;
+#	*)
+#	    SEDSTR=$1
+#	    ;;
+#     esac
+#     shift
+# done
+
+# echo "$REVGREPSTR"
+# echo "find $WD -type f | grep -v -G "$REVGREPSTR""
+# echo
+# find $WD -type f | grep -v -G "$REVGREPSTR"
+
+
+# old code
 if [[ "$#" -lt 2 ]]; then
     echo "missing arguments"
     exit 1
