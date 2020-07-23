@@ -47,11 +47,9 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-echo $(find $WD -type f)
 if [[ $XBOO == 1 ]]; then
     find $WD -type f | grep -v -G "$REVGREPSTR" | xargs sed -i "$SEDSTR"
 else
-    echo came here
     find $WD -type f | xargs sed -i "$SEDSTR"
 fi
 
